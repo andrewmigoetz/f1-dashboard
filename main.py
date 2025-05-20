@@ -27,10 +27,17 @@ for gp in gps:
 
 combined = pd.concat(all_results, ignore_index=True)
 
+combined['FullName'] = combined['FullName'].replace({
+    'Andrea Kimi Antonelli': 'Kimi Antonelli',
+})
+
+combined['FirstName'] = combined['FirstName'].replace({
+    'Andrea Kimi': 'Kimi',
+})
+
 combined.to_csv("results/f1_2025_combined_results.csv", index=False)
 print("Saved: results/f1_2025_combined_results.csv")
 
 combined.to_excel("results/f1_2025_combined_results.xlsx", index=False, engine='openpyxl')
 
 print("Saved: results/f1_2025_combined_results.xlsx")
-
